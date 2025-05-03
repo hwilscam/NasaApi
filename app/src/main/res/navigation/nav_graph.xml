@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph">
+    <!-- Photo Gallery Fragment -->
+    <fragment
+        android:id="@+id/photoGalleryFragment"
+        android:name="com.example.nasaapi.PhotoGalleryFragment"
+        android:label="Photo Gallery"
+        tools:layout="@layout/fragment_photo_gallery">
+        <action
+            android:id="@+id/action_photoGalleryFragment_to_singlePhotoFragment"
+            app:destination="@id/singlePhotoFragment" />
+    </fragment>
+
+    <!-- Single Photo Fragment -->
+    <fragment
+        android:id="@+id/singlePhotoFragment"
+        android:name="com.example.nasaapi.SinglePhotoFragment"
+        android:label="Single Photo"
+        tools:layout="@layout/fragment_photo_single">
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

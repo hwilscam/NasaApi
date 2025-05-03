@@ -12,12 +12,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.navigation.fragment.findNavController
 import com.example.nasaapi.databinding.FragmentPhotoGalleryBinding
 import kotlinx.coroutines.launch
 
 
-private const val TAG = "PhotoGalleryFragment"
+
 
 class PhotoGalleryFragment : Fragment(){
     private var _binding: FragmentPhotoGalleryBinding? = null
@@ -42,11 +41,9 @@ class PhotoGalleryFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewLifecycleOwner.lifecycleScope.launch {}
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                photoGalleryViewModel.galleryItem.collect { items ->
+                photoGalleryViewModel.galleryItems.collect { items ->
 
                     binding.photoGrid.adapter = PhotoListAdapter(items)
                     Log.d(TAG, "Items = $items")

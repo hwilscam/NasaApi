@@ -2,11 +2,16 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.safeargs)
+    id("androidx.navigation.safeargs.kotlin")
 
 }
 
 android {
+
+    viewBinding {
+        enable = true
+    }
+
     namespace = "com.example.nasaapi"
     compileSdk = 35
 
@@ -35,9 +40,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
-    }
-    buildFeatures {
-        viewBinding = true
     }
 }
 
@@ -82,3 +84,4 @@ dependencies {
     implementation(libs.androidx.paging.runtime.ktx)
 
 }
+

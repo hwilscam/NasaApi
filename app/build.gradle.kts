@@ -7,6 +7,11 @@ plugins {
 }
 
 android {
+
+    viewBinding{
+        enable = true
+    }
+
     namespace = "com.example.nasaapi"
     compileSdk = 35
 
@@ -35,9 +40,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
-    }
-    buildFeatures {
-        viewBinding = true
     }
 }
 

@@ -42,11 +42,9 @@ class PhotoGalleryFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewLifecycleOwner.lifecycleScope.launch {}
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                photoGalleryViewModel.galleryItem.collect { items ->
+                photoGalleryViewModel.galleryItems.collect { items ->
 
                     binding.photoGrid.adapter = PhotoListAdapter(items)
                     Log.d(TAG, "Items = $items")

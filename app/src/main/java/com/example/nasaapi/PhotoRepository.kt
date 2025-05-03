@@ -7,8 +7,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 
 class PhotoRepository {
-
     private val nasaApi: NasaApi
+    private val apiKey = "H4FxG4aJIHrxBHcUuFEVdXE3rdxDKCycrSCc1e5h"
+    private val image_amount = 75
 
     init {
         val retrofit: Retrofit = Retrofit.Builder()
@@ -19,6 +20,7 @@ class PhotoRepository {
         nasaApi = retrofit.create()
     }
 
-    suspend fun fetchPhotos(): List<GalleryItem> = nasaApi.fetchAPOD().photos.galleryItems
+    suspend fun fetchPhotos(apiKey: String, image_amount: Int): List<GalleryItem> =
+        nasaApi.fetchPhotos(this.apiKey, image_amount = image_amount)
 
 }

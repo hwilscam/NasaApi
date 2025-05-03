@@ -16,7 +16,7 @@ class PhotoViewHolder(
     fun bind(galleryItem: GalleryItem) {
         // Load the image into the image view
         binding.itemImageView.load(galleryItem.url)
-
+        
         // Set the click listener to navigate to the single photo fragment
         binding.root.setOnClickListener {
             val action = PhotoGalleryFragmentDirections
@@ -36,7 +36,7 @@ class PhotoViewHolder(
 
 
 class PhotoListAdapter(
-    private val galleryItem: List<GalleryItem>,
+    private val galleryItems: List<GalleryItem>,
 ) : RecyclerView.Adapter<PhotoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
@@ -46,8 +46,7 @@ class PhotoListAdapter(
     }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-        val item = galleryItem[position]
-        holder.bind(item)
+        holder.bind(galleryItems[position])
 
         holder.itemView.setOnClickListener {
         }
@@ -55,5 +54,5 @@ class PhotoListAdapter(
 
 
 
-    override fun getItemCount() = galleryItem.size
+    override fun getItemCount() = galleryItems.size
 }
